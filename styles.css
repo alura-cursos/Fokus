@@ -32,7 +32,7 @@ html {
 
 body {
     min-height: 100vh;
-    background: url("/imagens/pattern.png");
+    background: url("./imagens/pattern.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
