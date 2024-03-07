@@ -3,7 +3,7 @@ const banner = document.querySelector('.app__image');
 const title = document.querySelector('.app__title');
 
 const btn = document.querySelectorAll('.app__card-button');
-
+const musicBtn = document.querySelector('#alternar-musica');
 
 //Busca dentro da lista na const btn todos os botões e informa o conteúdo do clique.
 btn.forEach((elemento) => {
@@ -11,13 +11,13 @@ btn.forEach((elemento) => {
         const context = elemento.getAttribute('data-contexto');
         //console.log(moodValue);
         changeContext(context);
+        activeBtn(context);
     })
 })
 
 function changeContext(context) {
     html.setAttribute('data-contexto', context);
     banner.setAttribute('src', "/imagens/" + context + ".png");
-
     switch (context) {
         case "foco":
             title.innerHTML = `
@@ -39,4 +39,20 @@ function changeContext(context) {
         default:
             break;
     }
+}
+
+function activeBtn(context) {
+    removeActive();
+    addActive(context);
+}
+
+function addActive(context) {
+    const btn = document.querySelector(`.app__card-button--${context}`);
+    btn.classList.add('active');
+}
+
+function removeActive() {
+    const active = document.querySelector('.active');
+    console.log(active);
+    active.classList.remove('active');
 }
