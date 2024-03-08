@@ -1,15 +1,21 @@
 // Encontrar o botão adicionar tarefa
 
 const addBtn = document.querySelector('.app__button--add-task');
+const cancelBtn = document.querySelector('.app__form-footer__button--cancel');
+
 const activityForm = document.querySelector('.app__form-add-task');
 const formTxtArea = document.querySelector('.app__form-textarea');
 const ulTaskArea = document.querySelector('.app__section-task-list');
 
 const tasks = JSON.parse(localStorage.getItem('tarefas')) || [];
 
+function attTasks() {
+    localStorage.setItem('tarefas', JSON.stringify(tasks));
+}
+
 
 //Criando um elemento
-function createTask(task){
+function createTask(task) {
 
     const li = document.createElement('li');
     li.classList.add('app__section-task-list-item')
@@ -28,6 +34,18 @@ function createTask(task){
 
     const btn = document.createElement('button');
     btn.classList.add('app_button-edit');
+
+    btn.onclick = () => {
+        //debugger;
+        const newDesc = prompt("Qual é o novo nome da tarefa?");
+        console.log('Nova descrição da tarefa: ', newDesc);
+        if (newDesc) {
+            paragraph.textContent = newDesc;
+            task.description = newDesc;
+            attTasks();
+        }
+    }
+
     const imgBtn = document.createElement('img');
     imgBtn.setAttribute('src', '/imagens/edit.png');
 
@@ -46,6 +64,11 @@ addBtn.addEventListener('click', () => {
     activityForm.classList.toggle('hidden');
 })
 
+cancelBtn.addEventListener('click', () =>{
+    formTxtArea.value = '';
+    activityForm.classList.toggle('hidden');
+})
+
 activityForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -53,12 +76,11 @@ activityForm.addEventListener('submit', (event) => {
         description: formTxtArea.value
     }
     tasks.push(task);
-
     //Mostrar a tarefa após inclusão
     const taskElement = createTask(task);
     ulTaskArea.append(taskElement);
     // Usar biblioteca JSON para poder guardar informações na localStorage. Principalmente se for Lista, visto que a localStorage por padrão não comporta listas.
-    localStorage.setItem('tarefas', JSON.stringify(tasks));
+    attTasks();
 
     formTxtArea.value = '';
     activityForm.classList.add('hidden');
