@@ -89,6 +89,13 @@ const counter = () => {
     if (timer <= 0) {
         alertTimer.play();
         console.log('Tempo finalizado')
+
+        const activeFocus = html.getAttribute('data-contexto') == 'foco';
+        if(activeFocus){
+            const evento = new CustomEvent('FocoFinalizado')
+            document.dispatchEvent(evento);
+        }
+
         stop();
         return;
     }
@@ -130,15 +137,15 @@ function showTimer() {
 function changeTimer(context) {
     switch (context) {
         case "foco":
-            timer = 1500;
+            timer = 30 /*1500*/;
             showTimer();
             break;
         case "short":
-            timer = 300;
+            timer = 5 /*300*/;
             showTimer();
             break;
         case "long":
-            timer = 900;
+            timer = 15 /*900*/;
             showTimer();
         default:
             break;
