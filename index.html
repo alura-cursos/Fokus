@@ -69,6 +69,61 @@
             </div>
         </section>
 
+        <section class="app__section-task-container">
+            <div class="app__section-task-content">
+                <header class="app__section-active-task">
+                    <p class="app__section-active-task-label">#Em andamento:</p>
+                    <p class="app__section-active-task-description"></p>
+                </header>
+                <div class="app__section-task-header">
+                    <h2 class="app__section-tasks-heading">Lista de tarefas:</h2>
+                    <div class="dropdown-container">
+                        <button class="app_button-more">
+                            <img src="/imagens/more.svg" alt="">
+                        </button>
+                        <ul class="app__section-task-header__ul">
+                            <li class="app__section-task-header__li">
+                                <button class="app__section-task-header__li__button" id="btn-remover-concluidas">
+                                    <img src="/imagens/check.svg" alt="">
+                                    Limpar tarefas concluídas
+                                </button>
+                            </li>
+                            <li class="app__section-task-header__li">
+                                <button class="app__section-task-header__li__button" id="btn-remover-todas">
+                                    <img src="/imagens/trash.svg" alt="">
+                                    Limpar todas as tarefas
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="app__section-task-list"></ul>
+                <form class="app__form-add-task hidden" aria-hidden="true">
+                    <div class="app__form-field">
+                        <label class="app__form-label">
+                            Adicionando tarefa
+                        </label>
+                        <textarea required rows="4" class="app__form-textarea" placeholder="No que você está trabalhando?"></textarea>
+                    </div>
+                    <footer class="app__form-footer">
+                        <button type="button" class="app__form-footer__button app__form-footer__button--delete">
+                            <img src="/imagens/delete.png" alt=""> Deletar
+                        </button>
+                        <div class="splitter"></div>
+                        <button type="button" class="app__form-footer__button app__form-footer__button--cancel">
+                            <img src="/imagens/close.png" alt=""> Cancelar
+                        </button>
+                        <button class="app__form-footer__button app__form-footer__button--confirm">
+                            <img src="/imagens/save.png" alt=""> Salvar
+                        </button>
+                    </footer>
+                </form>
+                <button class="app__button--add-task">
+                    <img src="/imagens/add_circle.png" alt=""> Adicionar nova tarefa
+                </button>
+            </div>
+        </section>
+
         <footer class="app__footer">
             <p class="app__footer-text">
                 Projeto fictício e sem fins comerciais. Imagens geradas por IA no Adobe Firefly.Desenvolvido por Alura. 
@@ -77,6 +132,7 @@
     </main>
 
     <script src="js/main.js" defer></script>
+    <script src="js/crud.js" defer></script>
 </body>
 
 </html>
