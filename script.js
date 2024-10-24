@@ -16,13 +16,11 @@ const musicPause = new Audio("/sons/pause.mp3");
 music.loop = true;
 
 let intervaloId = null;
-let temporizadorcache = 0;
-let temporizador = 8;
-const duracaoFoco = 8;
+const duracaoFoco = 1500;
 const duracaoDescansoCurto = 300;
 const duracaoDescansoLongo = 900;
-
-timer.innerText = "25:00";
+let temporizadorcache = duracaoFoco;
+let temporizador = duracaoFoco;
 
 musicaInput.addEventListener("change", () => {
   if (music.paused) {
@@ -68,19 +66,15 @@ function pauseButton() {
   imgStartpause.setAttribute("src", "/imagens/play_arrow.png");
 }
 
-function resetaTemporizador() {
-  temporizador;
-}
-
 const contagemRegressiva = () => {
   if (temporizador <= 0) {
-    finalizarTemporizador();
     console.log("Estou sendo chamando");
     beepFim.play();
     alert("Tempo Finalizado!");
+    finalizarTemporizador();
     beepFim.pause();
-    pauseButton();
     temporizador = temporizadorcache;
+    pauseButton();
     return;
   }
   temporizador -= 1;
@@ -93,7 +87,6 @@ function finalizarTemporizador() {
 }
 
 function playTemporizadorAndPause() {
-  temporizadorcache = temporizador;
   console.log("Temporizador: ", temporizador);
   if (intervaloId) {
     finalizarTemporizador();
@@ -111,17 +104,20 @@ function setTemplate(template) {
   switch (template) {
     case "foco":
       temporizador = duracaoFoco;
+      temporizadorcache = duracaoFoco;
       title.innerHTML =
         "Otimize sua produtividade,<br /><strong class='app__title-strong'>mergulhe no que importa.</strong>";
       break;
 
     case "descanso-curto":
       temporizador = duracaoDescansoCurto;
+      temporizadorcache = duracaoDescansoCurto;
       title.innerHTML =
         "Que tal dar uma respirada?<br /><strong class='app__title-strong'>Faça uma pausa curta.</strong>";
       break;
     case "descanso-longo":
       temporizador = duracaoDescansoLongo;
+      temporizadorcache = duracaoDescansoLongo;
       title.innerHTML =
         "Hora de voltar à superfície.<br /><strong class='app__title-strong'>Faça uma pausa longa.</strong>";
       break;
@@ -129,3 +125,14 @@ function setTemplate(template) {
       break;
   }
 }
+
+function exibirtempo() {
+  tempo = new Date(temporizador * 1000); //Aqui o date trabalha com milisegundo
+  tempoFormatado = tempo.toLocaleTimeString("pt-Br", {
+    minute: "2-digit",
+    second: "2-digit",
+  });
+  timer.innerHTML = `${tempoFormatado}`;
+}
+
+exibirtempo();
