@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.botoes {
+    display: flex;
+    height: 390px;
+    width: 588px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background-color: #14448090;
+    border-radius: 32px;
+}
+
+.button-style {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    width: 61px;
+    height: 43px;
+    background-color: #14448090;
+}
+
+.descanso-curto-button, .descanso-longo-button {
+    width: 167px;
+}
+
+.active {
+    background-color: #144480;
+    font-weight: 700;
+}
