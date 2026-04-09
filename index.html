@@ -15,6 +15,8 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
+    <script src="./script-crud.js" defer></script>
 </head>
 
 <body>
@@ -66,6 +68,60 @@
                         <span>Começar</span>
                     </button>
                 </div>
+            </div>
+        </section>
+        <section class="app__section-task-container">
+            <div class="app__section-task-content">
+                <header class="app__section-active-task">
+                    <p class="app__section-active-task-label">#Em andamento:</p>
+                    <p class="app__section-active-task-description"></p>
+                </header>
+                <div class="app__section-task-header">
+                    <h2 class="app__section-tasks-heading">Lista de tarefas:</h2>
+                    <div class="dropdown-container">
+                        <button class="app_button-more">
+                            <img src="/imagens/more.svg" alt="">
+                        </button>
+                        <ul class="app__section-task-header__ul">
+                            <li class="app__section-task-header__li">
+                                <button class="app__section-task-header__li__button" id="btn-remover-concluidas">
+                                    <img src="/imagens/check.svg" alt="">
+                                    Limpar tarefas concluídas
+                                </button>
+                            </li>
+                            <li class="app__section-task-header__li">
+                                <button class="app__section-task-header__li__button" id="btn-remover-todas">
+                                    <img src="/imagens/trash.svg" alt="">
+                                    Limpar todas as tarefas
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="app__section-task-list"></ul>
+                <form class="app__form-add-task hidden" aria-hidden="true">
+                    <div class="app__form-field">
+                        <label class="app__form-label">
+                            Adicionando tarefa
+                        </label>
+                        <textarea required rows="4" class="app__form-textarea" placeholder="No que você está trabalhando?"></textarea>
+                    </div>
+                    <footer class="app__form-footer">
+                        <button type="button" class="app__form-footer__button app__form-footer__button--delete">
+                            <img src="/imagens/delete.png" alt=""> Deletar
+                        </button>
+                        <div class="splitter"></div>
+                        <button type="button" class="app__form-footer__button app__form-footer__button--cancel">
+                            <img src="/imagens/close.png" alt=""> Cancelar
+                        </button>
+                        <button class="app__form-footer__button app__form-footer__button--confirm">
+                            <img src="/imagens/save.png" alt=""> Salvar
+                        </button>
+                    </footer>
+                </form>
+                <button class="app__button--add-task">
+                    <img src="/imagens/add_circle.png" alt=""> Adicionar nova tarefa
+                </button>
             </div>
         </section>
 
